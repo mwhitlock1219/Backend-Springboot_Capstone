@@ -19,8 +19,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-// full link to front end in cross origins
-@CrossOrigin(origins = "https://frontend-react-ui-capstone.herokuapp.com", maxAge = 3600)
+// //LOCAL
+@CrossOrigin(origins = "*", maxAge = 3600)
+
+// //HEROKU
+// @CrossOrigin(origins = "https://frontend-react-ui-capstone.herokuapp.com",
+// maxAge = 3600)
 
 public class WatchListController {
 

@@ -32,7 +32,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin(origins = "https://frontend-react-ui-capstone.herokuapp.com", maxAge = 3600)
+// //HEROKU
+// @CrossOrigin(origins = "https://frontend-react-ui-capstone.herokuapp.com",
+// maxAge = 3600)
+
+// //LOCAL
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
