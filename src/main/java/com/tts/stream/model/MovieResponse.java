@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 public class MovieResponse {
     private String movieId;
     private String userId;
+    private String type;
 
     public String getMovieId() {
         return movieId;
@@ -23,8 +24,17 @@ public class MovieResponse {
         this.userId = userId;
     }
 
-    public MovieResponse(String movieId, String userId) {
+    public MovieResponse(String movieId, String userId, String type) {
         this.movieId = movieId;
         this.userId = userId;
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
