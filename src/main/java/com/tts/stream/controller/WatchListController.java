@@ -12,6 +12,7 @@ import com.tts.stream.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,13 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-// //LOCAL
-@CrossOrigin(origins = "*", maxAge = 3600)
-
-// //HEROKU
-// @CrossOrigin(origins = "https://frontend-react-ui-capstone.herokuapp.com",
-// maxAge = 3600)
-
+@CrossOrigin
 public class WatchListController {
 
     @Autowired
@@ -34,16 +29,14 @@ public class WatchListController {
     @Autowired
     public UserRepository userRepository;
 
-    // @GetMapping("/user")
-    // @ResponseBody
-    // public void pullMovieToWatchList(@RequestParam(name = "userId") Long userId)
-    // {
-    // System.out.println(userId);
-    // // Optional<User> user = userRepository.findById(Long.parseLong(userId));
-    // // User currentUser = user.get();
-    // // String currentWatchList = currentUser.getWatchList();
-    // // return currentWatchList;
-    // }
+    @GetMapping("/user/{userId}")
+    public String pullMovieToWatchList(@PathVariable Long userId) {
+        System.out.println("this is the userid from watchlist controller " + userId);
+        Optional<User> user = userRepository.findById(userId);
+        User currentUser = user.get();
+        String currentWatchList = currentUser.getWatchList();
+        return currentWatchList;
+    }
 
     @PostMapping("/watchlist")
     public void addMovieToWatchlist(@RequestBody MovieResponse package1) {
